@@ -48,24 +48,24 @@ public class Person {
         lender.receiveCustody(something, this);
     }
 
-    protected void receiveCustody(Thing something, Person person) {
-        if (person == this) return;
+    protected void receiveCustody(Thing something, Person lender) {
+        if (lender == this) return;
 
         currentBelongings.add(something);
 
         if (this.isOwner(something) || this.isBorrowing(something)) {
-            this.settleLeases(something);
+            this.notifyBorrowers(something);
         } else {
-            lenders.put(something, person);
+            lenders.put(something, lender);
         }
 
     }
 
-    protected void settleLeases(Thing something) {
+    protected void notifyBorrowers(Thing something) {
         if (!this.hasCustody(something)) lenders.remove(something);
 
         Person borrower = borrowers.remove(something);
-        if (borrower != null) borrower.settleLeases(something);
+        if (borrower != null) borrower.notifyBorrowers(something);
     }
 
     public String toString() { return name; }

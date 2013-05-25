@@ -2,7 +2,7 @@ package borrow;
 
 public class Thing {
     protected String description;
-    private Person owner;
+    protected Person owner;
 
     public Thing(String description, Person initialOwner) {
         this.description = description;
