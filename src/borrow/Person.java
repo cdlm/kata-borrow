@@ -8,8 +8,7 @@ import java.util.Map;
 public class Person {
     protected String name;
     protected List<Thing> currentBelongings;
-    protected Map<Thing, Person> borrowers;
-    protected Map<Thing, Person> lenders;
+    protected Map<Thing, Person> borrowers, lenders;
 
     public Person(String name) {
         this.name = name;
