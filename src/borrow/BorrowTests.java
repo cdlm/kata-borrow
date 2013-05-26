@@ -69,6 +69,20 @@ public class BorrowTests {
     }
 
     @Test
+    public void testLendSeveral() {
+        Thing mug = jake.acquireSomething("coffee mug");
+        Thing hat = jake.acquireSomething("fedora");
+
+        assertTrue(jake.lend(finn, mug));
+        assertTrue(jake.lend(finn, hat));
+        assertTrue(jake.lend(marcelline, viola));
+
+        assertTrue(finn.hasCustody(mug));
+        assertTrue(finn.hasCustody(hat));
+        assertTrue(marcelline.hasCustody(viola));
+    }
+
+    @Test
     public void testBorrowAndGiveBack() {
         jake.lend(marcelline, viola);
 
