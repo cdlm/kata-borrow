@@ -47,17 +47,16 @@ public class Person {
         lender.receiveCustody(something, this);
     }
 
-    protected void receiveCustody(Thing something, Person lender) {
-        if (lender == this) return;
+    protected void receiveCustody(Thing something, Person previousCustodian) {
+        if (previousCustodian == this) return;
 
         currentBelongings.add(something);
 
         if (this.isOwner(something) || this.isBorrowing(something)) {
             this.notifyBorrowers(something);
         } else {
-            lenders.put(something, lender);
+            lenders.put(something, previousCustodian);
         }
-
     }
 
     protected void notifyBorrowers(Thing something) {
