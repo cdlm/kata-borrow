@@ -125,6 +125,7 @@ public class BorrowTests {
         iceKing.lend(finn, viola);
 
         assertTrue(finn.hasCustody(viola));
+        assertTrue(finn.isBorrowing(viola));
         assertFalse(marcelline.isBorrowing(viola));
         assertFalse(iceKing.isBorrowing(viola));
     }

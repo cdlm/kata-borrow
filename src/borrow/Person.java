@@ -39,12 +39,13 @@ public class Person {
         return true;
     }
 
-    public void giveBack(Thing something) {
-        if (!this.hasCustody(something)) return;
+    public boolean giveBack(Thing something) {
+        if (!this.hasCustody(something)) return false;
 
         Person lender = lenders.get(something);
         currentBelongings.remove(something);
         lender.receiveCustody(something, this);
+        return true;
     }
 
     protected void receiveCustody(Thing something, Person previousCustodian) {
